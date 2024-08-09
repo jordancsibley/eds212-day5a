@@ -1,0 +1,76 @@
+---
+title: "Day 5 morning session"
+format: html
+editor: visual
+execute:
+  warning: false
+---
+
+
+```{r}
+#| warning: false
+#| message: false 
+
+# load libraries ----
+library(tidyverse)
+# the hash pipe I added at the top makes it so that warning that usually show up when you render the document won't be there 
+```
+
+
+## Star wars data package 
+- use the head(), tail(), dim(), and dplyr::starwars  functions to explore data 
+```{r}
+#| include: false 
+# this command above means that this code chunk will not appear in the rendered document 
+# data exploration using starwars ----
+head(starwars)
+
+tail(starwars)
+
+dim(starwars)
+
+dplyr::starwars
+```
+
+- Create a scatter plot of character `mass` (y -axis) and `height` (x-axis)
+- Update the color of the points so that color changes based on the value of 'mass'
+```{r}
+#| warning: false 
+#| echo: false
+# this execution function allows the code and warnings to be hidden 
+ggplot(data = starwars, aes(x= height, y = mass, color = mass))+
+  geom_point() +
+  labs(x = "Height(cm)",
+       y = "Mass (kg)",
+       title = "Size variables of Star Wars characters")
+```
+
+
+- Create a histogram of character heights
+- Update the fill color (`fill`) to purple and the outside border line (`color`) of each histogram bin to orange 
+- Update the axis labels 
+- Update your code options so that only your code and output graph appear in the rendered doc 
+
+```{r}
+#| fig-cap: "This is my figure caption"
+#| fig-alt: "This is some alt text, helpful to explain an image for the visually impaired"
+# histogram of character heights ----
+ggplot(data = starwars, aes(x = height))+
+  geom_histogram(color = "orange", fill = "purple")+
+  labs(x = "Height (cm)",
+       y = "Count",
+       title = "Height frequencies of Star Wars characters")
+```
+
+`df$col_name` This is how you grab a single column 
+```{r}
+# looking at the mean of character heights ----
+sw_height_mean <- round(x = mean(starwars$height, na.rm = TRUE),
+                        digits =3)
+#na.rm removes the NAs from the column. The default is FALSE, meaning it won't remove the NAs before taking the mean
+```
+
+The mean height of all star wars characters is `r sw_height_mean`
+
+
+
