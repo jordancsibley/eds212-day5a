@@ -6,7 +6,6 @@ execute:
   warning: false
 ---
 
-
 ```{r}
 #| warning: false
 #| message: false 
@@ -16,9 +15,10 @@ library(tidyverse)
 # the hash pipe I added at the top makes it so that warning that usually show up when you render the document won't be there 
 ```
 
+## Star wars data package
 
-## Star wars data package 
-- use the head(), tail(), dim(), and dplyr::starwars  functions to explore data 
+-   use the head(), tail(), dim(), and dplyr::starwars functions to explore data
+
 ```{r}
 #| include: false 
 # this command above means that this code chunk will not appear in the rendered document 
@@ -32,8 +32,9 @@ dim(starwars)
 dplyr::starwars
 ```
 
-- Create a scatter plot of character `mass` (y -axis) and `height` (x-axis)
-- Update the color of the points so that color changes based on the value of 'mass'
+-   Create a scatter plot of character `mass` (y -axis) and `height` (x-axis)
+-   Update the color of the points so that color changes based on the value of 'mass'
+
 ```{r}
 #| warning: false 
 #| echo: false
@@ -45,11 +46,10 @@ ggplot(data = starwars, aes(x= height, y = mass, color = mass))+
        title = "Size variables of Star Wars characters")
 ```
 
-
-- Create a histogram of character heights
-- Update the fill color (`fill`) to purple and the outside border line (`color`) of each histogram bin to orange 
-- Update the axis labels 
-- Update your code options so that only your code and output graph appear in the rendered doc 
+-   Create a histogram of character heights
+-   Update the fill color (`fill`) to purple and the outside border line (`color`) of each histogram bin to orange
+-   Update the axis labels
+-   Update your code options so that only your code and output graph appear in the rendered doc
 
 ```{r}
 #| fig-cap: "This is my figure caption"
@@ -62,7 +62,8 @@ ggplot(data = starwars, aes(x = height))+
        title = "Height frequencies of Star Wars characters")
 ```
 
-`df$col_name` This is how you grab a single column 
+`df$col_name` This is how you grab a single column
+
 ```{r}
 # looking at the mean of character heights ----
 sw_height_mean <- round(x = mean(starwars$height, na.rm = TRUE),
@@ -72,5 +73,4 @@ sw_height_mean <- round(x = mean(starwars$height, na.rm = TRUE),
 
 The mean height of all star wars characters is `r sw_height_mean`
 
-
-
+# Hello, I need coffee
